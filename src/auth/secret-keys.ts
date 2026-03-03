@@ -1,0 +1,2 @@
+export const REFRESH_SECRET = 'REFRESH_SECRET';
+export const ACCESS_SECRET = 'ACCESS_SECRET';

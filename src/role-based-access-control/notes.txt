@@ -1,0 +1,30 @@
+In Role based
+
+Roles table
+Permission Table
+
+Junction Table Roles_Permission
+
+On Registeration Role is assigned to user
+
+In AuthGuard the role is extracted from token and permissions are extracted from DB and stored in request
+
+Industry Hybrid approach
+
+1. On Login, role is extracted from token and permissions are extracted from DB and stored in JWT
+2. Instead of fetching permission in authGuard permissions are set in JWT
+3. In ProtectedGuard we check if user has permissions or not
+
+This works for system in which roles and permissions do not change
+
+
+On frequent changes of roles
+
+1. We invalidate refresh token
+2. and wait for short lived access token to expire
+3. Then on login it again re fetches the new role and permissions
+
+or
+
+1. We can use cache to fetch roles and permissions dynamically
+2. and invalidating cache in transaction of DB update of roles and permission
